@@ -16,16 +16,16 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:site_name" content="윤피아노교습소">
-  <meta property="og:title" content="좋아하는 음악을, 자기만의 연주로 | 윤피아노교습소">
-  <meta property="og:description" content="제주 애월 하귀초등학교 맞은편. 맞춤 개인 지도와 화요일 작은 연주회를 통해 음악의 즐거움과 자기표현을 키워갑니다.">
+  <meta property="og:title" content="좋아하는 음악을 연주하며, 나다움을 찾아갑니다 | 윤피아노교습소">
+  <meta property="og:description" content="제주 애월 하귀초등학교 맞은편. 좋아하는 곡을 직접 고르고 연주하며 음악의 즐거움과 나다운 표현을 발견하는 피아노 교습소입니다.">
   <meta property="og:image" content="assets/og-yoon-piano.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="햇살이 드는 공간에 피아노와 꽃, 식물이 함께 있는 윤피아노교습소 공유 이미지">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="좋아하는 음악을, 자기만의 연주로 | 윤피아노교습소">
-  <meta name="twitter:description" content="맞춤 개인 지도와 화요일 작은 연주회를 통해 음악의 즐거움과 자기표현을 키워가는 제주 애월의 피아노 교습소입니다.">
+  <meta name="twitter:title" content="좋아하는 음악을 연주하며, 나다움을 찾아갑니다 | 윤피아노교습소">
+  <meta name="twitter:description" content="좋아하는 곡을 직접 고르고 연주하며 음악의 즐거움과 나다운 표현을 발견하는 제주 애월의 피아노 교습소입니다.">
   <meta name="twitter:image" content="assets/og-yoon-piano.jpg">
   <script type="application/ld+json">
     {
@@ -46,11 +46,12 @@
       --ivory: #fbf8ef;
       --cream: #f1ead9;
       --paper: #fffdf8;
-      --butter: #ead986;
-      --apricot: #dc9878;
+      --butter: #ead98f;
+      --apricot: #d77f70;
+      --blush: #f2d2c8;
       --green: #738d64;
       --green-deep: #526b49;
-      --rose: #c98287;
+      --rose: #c66f74;
       --brown: #725a47;
       --ink: #3e3934;
       --muted: #6f6962;
@@ -89,7 +90,7 @@
     .eyebrow {
       display: inline-flex; align-items: center; gap: .6rem;
       margin: 0 0 1rem; padding: .35rem .7rem; border-radius: 999px;
-      background: rgba(234,217,134,.28); color: var(--green-deep); font-size: .82rem;
+      background: rgba(242,210,200,.5); color: var(--green-deep); font-size: .82rem;
       font-weight: 400; letter-spacing: .07em;
     }
     .eyebrow::before { content: ""; width: 16px; height: 1px; background: currentColor; }
@@ -103,7 +104,7 @@
     h1 em::after {
       content: ""; position: absolute; z-index: -1; left: -.05em; right: -.08em;
       bottom: .06em; height: .24em; border-radius: 999px;
-      background: rgba(234,217,134,.8); transform: rotate(-1.5deg);
+      background: rgba(215,127,112,.32); transform: rotate(-1.5deg);
     }
     h2 { font-size: clamp(2rem, 4vw, 3.55rem); line-height: 1.28; margin-bottom: 1.35rem; }
     h3 { font-size: 1.18rem; line-height: 1.55; font-weight: 400; }
@@ -114,7 +115,7 @@
       padding: .45rem 1rem; background: var(--green-deep); color: rgba(255,255,255,.9);
       text-align: center; font-size: .78rem; letter-spacing: .04em;
     }
-    .announcement strong { color: #fff2bd; font-weight: 400; }
+    .announcement strong { color: #ffd7c9; font-weight: 500; }
     header {
       position: sticky; top: 0; z-index: 50;
       background: rgba(248, 245, 237, .88); backdrop-filter: blur(14px);
@@ -123,8 +124,7 @@
     header.scrolled { border-color: var(--line); box-shadow: 0 10px 35px rgba(62,57,52,.06); }
     .nav { height: 82px; display: flex; align-items: center; justify-content: space-between; }
     .brand { display: flex; flex-direction: column; line-height: 1.15; }
-    .brand strong { display: flex; align-items: center; gap: .45rem; font-family: var(--serif); font-size: 1.28rem; font-weight: 700; letter-spacing: -.02em; }
-    .brand-note { display: inline-grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: var(--butter); color: var(--green-deep); font-family: var(--serif); font-size: .95rem; }
+    .brand strong { display: flex; align-items: center; font-family: var(--serif); font-size: 1.28rem; font-weight: 700; letter-spacing: -.02em; }
     .brand small { margin-top: .3rem; color: var(--muted); font-size: .66rem; letter-spacing: .15em; }
     .nav-links { display: flex; align-items: center; gap: 2rem; font-size: .92rem; }
     .nav-links a { position: relative; }
@@ -136,7 +136,7 @@
       border: 1px solid var(--green-deep); font-weight: 700; line-height: 1.2;
       transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
     }
-    .nav-cta, .btn.primary { background: var(--green-deep); color: #fff; }
+    .nav-cta, .btn.primary { background: var(--green-deep); color: #fff; box-shadow: inset 0 -2px 0 rgba(198,111,116,.3); }
     .btn.secondary { border-color: var(--line); background: rgba(255,255,255,.42); }
     .nav-cta:hover, .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(63, 74, 56, .14); }
     .menu-button { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: transparent; }
@@ -144,7 +144,7 @@
     .hero { position: relative; overflow: hidden; padding: 76px 0 104px; }
     .hero::before {
       content: ""; position: absolute; width: 540px; height: 540px; border-radius: 50%;
-      right: -220px; top: -260px; background: rgba(229, 213, 156, .35); filter: blur(1px);
+      right: -220px; top: -260px; background: rgba(242, 210, 200, .48); filter: blur(1px);
     }
     .hero-grid { display: grid; grid-template-columns: 1.03fr .97fr; gap: clamp(42px, 7vw, 92px); align-items: center; }
     .hero-copy { padding-block: 24px; position: relative; z-index: 1; }
@@ -158,12 +158,12 @@
     .supporting li { padding: .48rem .78rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.38); color: #5f574f; font-size: .84rem; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 2.3rem; }
     .location-line { display: flex; gap: .8rem; align-items: center; color: var(--brown); font-weight: 700; font-size: .94rem; }
-    .location-line span:first-child { width: 9px; height: 9px; border-radius: 50%; background: var(--apricot); box-shadow: 0 0 0 6px rgba(201,143,108,.15); }
+    .location-line span:first-child { width: 9px; height: 9px; border-radius: 50%; background: var(--apricot); box-shadow: 0 0 0 6px rgba(215,127,112,.15); }
 
     .hero-visual { position: relative; min-height: 620px; }
     .hero-note {
       position: absolute; z-index: 2; right: -14px; top: 9%; width: 74px; height: 74px;
-      display: grid; place-items: center; border-radius: 50%; background: var(--butter);
+      display: grid; place-items: center; border-radius: 50%; background: var(--blush);
       color: var(--green-deep); font-family: var(--serif); font-size: 2.3rem;
       box-shadow: 0 12px 28px rgba(82,107,73,.15); transform: rotate(8deg);
     }
@@ -253,7 +253,7 @@
       position: relative; overflow: hidden;
       display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(40px, 7vw, 86px);
       padding: clamp(38px, 7vw, 82px); border-radius: var(--radius-l);
-      background: #d7a27f; color: #332e2a;
+      background: #d99a84; color: #332e2a;
     }
     .recital-panel::after {
       content: "♪"; position: absolute; right: 4%; top: -9%;
@@ -399,11 +399,11 @@
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main">본문 바로가기</a>
-  <div class="announcement"><strong>매주 화요일</strong>&nbsp; 좋아하는 음악을 자기만의 연주로 표현하는 작은 무대가 열립니다&nbsp; ♪</div>
+  <div class="announcement"><strong>매주 화요일</strong>&nbsp; 좋아하는 음악을 연주하며 나다움을 발견하는 작은 무대가 열립니다&nbsp; ♪</div>
   <header id="header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="윤피아노교습소 처음으로">
-        <strong><span class="brand-note" aria-hidden="true">♪</span>윤피아노교습소</strong>
+        <strong>윤피아노교습소</strong>
         <small>YOON PIANO · AEWOL</small>
       </a>
       <button class="menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false">메뉴</button>
@@ -422,9 +422,9 @@
     <section class="hero" id="top">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="hand-note">좋아하는 음악 속에서, 나다운 소리를 발견합니다 ♪</p>
+          <p class="hand-note">음악 속에서 만나는, 조금 더 빛나는 나 ♪</p>
           <p class="eyebrow">제주 애월 · 하귀</p>
-          <h1>좋아하는 음악을,<br><em>자기만의 연주로</em></h1>
+          <h1>좋아하는 음악을<br>연주하며, <em>나다움을</em><br>찾아갑니다</h1>
           <p class="lead">아이의 속도와 성향을 세심하게 살피고, 마음이 가는 곡을 직접 고르고 연주하며 음악의 즐거움과 자기표현을 알아가도록 지도합니다.</p>
           <ul class="supporting" aria-label="윤피아노의 특징">
             <li>맞춤 개인 지도</li>
@@ -576,7 +576,7 @@
   </main>
 
   <footer>
-    <div class="container footer-inner"><div><div class="footer-brand">윤피아노교습소</div><div>좋아하는 음악을, 자기만의 연주로</div></div><div>제주특별자치도 제주시 애월읍 · 하귀초등학교 맞은편<br>상세 사업자 정보 확인 후 표기 예정</div></div>
+    <div class="container footer-inner"><div><div class="footer-brand">윤피아노교습소</div><div>좋아하는 음악을 연주하며, 나다움을 찾아갑니다</div></div><div>제주특별자치도 제주시 애월읍 · 하귀초등학교 맞은편<br>상세 사업자 정보 확인 후 표기 예정</div></div>
   </footer>
   <a class="mobile-contact" href="#contact">편하게 상담 문의하기</a>
 
