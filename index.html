@@ -8,13 +8,14 @@
   <meta name="theme-color" content="#f7f3ea">
   <style>
     :root {
-      --ivory: #f8f5ed;
-      --cream: #efe7d8;
+      --ivory: #fbf8ef;
+      --cream: #f1ead9;
       --paper: #fffdf8;
-      --butter: #e5d59c;
-      --apricot: #c98f6c;
-      --green: #758268;
-      --green-deep: #52604b;
+      --butter: #ead986;
+      --apricot: #dc9878;
+      --green: #738d64;
+      --green-deep: #526b49;
+      --rose: #c98287;
       --brown: #725a47;
       --ink: #3e3934;
       --muted: #6f6962;
@@ -101,11 +102,7 @@
 
     .hero-visual { position: relative; min-height: 620px; }
     .photo-shell { position: absolute; inset: 0 0 44px 34px; border-radius: 46% 46% 26px 26px; overflow: hidden; background: #dfd6c7; box-shadow: var(--shadow); }
-    .photo-placeholder { height: 100%; display: grid; place-items: center; position: relative; overflow: hidden; color: #5e584f; }
-    .photo-placeholder::before { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, rgba(255,255,255,.72), transparent 45%), radial-gradient(circle at 70% 28%, rgba(225,199,127,.8), transparent 22%), linear-gradient(165deg, #dfe3d6 0 52%, #b6a28c 52% 56%, #7a6758 56% 100%); }
-    .photo-note { position: relative; z-index: 1; width: min(78%, 350px); padding: 1.25rem 1.4rem; border: 1px solid rgba(255,255,255,.65); border-radius: 18px; background: rgba(255,253,248,.78); backdrop-filter: blur(8px); text-align: center; }
-    .photo-note strong { display: block; font-family: var(--serif); font-size: 1.12rem; margin-bottom: .25rem; }
-    .photo-note span { color: var(--muted); font-size: .82rem; }
+    .photo-shell img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 43% center; }
     .visual-caption { position: absolute; left: 0; bottom: 0; width: 215px; padding: 1.1rem 1.25rem; border-radius: 18px; background: var(--paper); box-shadow: 0 12px 36px rgba(73,58,43,.12); }
     .visual-caption b { display: block; font-family: var(--serif); font-size: 1.2rem; margin-bottom: .2rem; }
     .visual-caption span { color: var(--muted); font-size: .82rem; }
@@ -296,6 +293,7 @@
       <nav class="nav-links" aria-label="주요 메뉴">
         <a href="#philosophy">교육 이야기</a>
         <a href="#lesson">수업 안내</a>
+        <a href="#recital">화요일 연주회</a>
         <a href="#space">공간</a>
         <a href="#location">오시는 길</a>
         <a class="nav-cta" href="#contact">수업 상담하기</a>
@@ -314,6 +312,7 @@
             <li>맞춤 개인 지도</li>
             <li>소수정예 시간정원제</li>
             <li>원장 직접 지도</li>
+            <li>화요일 작은 연주회</li>
           </ul>
           <div class="hero-actions">
             <a class="btn primary" href="#contact">수업 상담하기</a>
@@ -321,13 +320,11 @@
           </div>
           <p class="location-line"><span aria-hidden="true"></span><span>하귀초등학교 맞은편</span></p>
         </div>
-        <div class="hero-visual reveal" aria-label="윤피아노 실제 공간 사진 영역">
+        <div class="hero-visual reveal">
           <div class="photo-shell">
-            <div class="photo-placeholder">
-              <div class="photo-note"><strong>윤피아노의 실제 모습</strong><span>피아노와 식물이 함께 보이는 공간 사진으로 교체 예정</span></div>
-            </div>
+            <img src="assets/yoon-piano-room.png" alt="식물과 알파카 인형, 밝은색 피아노가 놓인 윤피아노교습소의 실제 공간" fetchpriority="high">
           </div>
-          <div class="visual-caption"><b>천천히, 자기답게</b><span>이해하고 자기 것으로 만드는 시간</span></div>
+          <div class="visual-caption"><b>밝게, 즐겁게, 자기답게</b><span>아이의 웃음과 음악이 함께 머무는 곳</span></div>
         </div>
       </div>
     </section>
@@ -371,7 +368,7 @@
     <section class="director" id="director">
       <div class="container director-grid">
         <div class="portrait-placeholder reveal">원장님이 악보를 살펴보는<br>자연스러운 실제 사진 영역</div>
-        <div class="reveal"><p class="eyebrow">From the Director</p><h2>오래 가르칠수록,<br>기다림의 중요성을 알게 됩니다.</h2><p class="lead">아이들을 가르치다 보면 같은 설명도 받아들이는 방법이 저마다 다르다는 것을 만납니다. 그래서 먼저 듣고, 살피고, 아이에게 맞는 방법을 함께 찾습니다.</p><p class="quote">“빨리 다음 곡으로 넘어가는 것보다,<br>아이가 이해하고 자기 것으로 만드는 시간이 더 중요하다고 생각합니다.”</p><p>작은 변화를 알아보고 편안하게 질문할 수 있는 선생님이 되겠습니다. 음악을 배우는 시간이 아이에게 오래 기억될 좋은 경험이기를 바랍니다.</p><p class="signature">윤피아노교습소 원장</p></div>
+        <div class="reveal"><p class="eyebrow">From the Director</p><h2>아이와 함께 웃고,<br>필요한 순간에는 기다립니다.</h2><p class="lead">윤피아노의 수업에는 밝은 웃음과 편안한 대화가 있습니다. 아이가 실수해도 부담을 갖지 않도록 긍정적으로 북돋고, 어려워하는 순간에는 서두르지 않고 다른 방법을 함께 찾아봅니다.</p><p class="quote">“빨리 다음 곡으로 넘어가는 것보다,<br>아이가 이해하고 자기 것으로 만드는 시간이 더 중요하다고 생각합니다.”</p><p>작은 변화를 알아보고 편안하게 질문할 수 있는 선생님이 되겠습니다. 음악을 배우는 시간이 아이에게 즐겁고 오래 기억될 경험이기를 바랍니다.</p><p class="signature">윤피아노교습소 원장</p></div>
       </div>
     </section>
 
