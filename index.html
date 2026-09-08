@@ -209,6 +209,15 @@
     }
     .recital-panel .eyebrow { color: #4f443b; background: rgba(255,253,248,.28); }
     .recital-panel .lead { color: #54483f; }
+    .recital-copy { position: relative; z-index: 2; }
+    .recital-copy h2 { position: relative; z-index: 2; max-width: 78%; }
+    .recital-flower {
+      position: absolute; z-index: 1; right: -34px; top: 74px;
+      width: clamp(138px, 15vw, 190px); height: auto;
+      transform: rotate(3deg); transform-origin: center;
+      filter: drop-shadow(0 10px 16px rgba(92,67,48,.10));
+      pointer-events: none; user-select: none;
+    }
     .recital-badge {
       display: inline-block; margin-bottom: 1.2rem; padding: .5rem .8rem;
       border: 1px solid rgba(51,46,42,.22); border-radius: 999px;
@@ -322,6 +331,8 @@
       .space-photo { min-height: 480px; }
       .location-panel { grid-template-columns: 1fr; }
       .location-sign { min-height: 280px; }
+      .recital-copy h2 { max-width: 72%; }
+      .recital-flower { right: 0; top: 76px; width: clamp(136px, 23vw, 174px); }
     }
 
     @media (max-width: 640px) {
@@ -360,6 +371,8 @@
       .score-recital { left: 12px; bottom: 12px; }
       .note-space { right: 12px; top: 10px; }
       .piano-blog { right: 10px; bottom: -4px; width: 92px; }
+      .recital-copy h2 { max-width: 73%; }
+      .recital-flower { right: -8px; top: 82px; width: 122px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -449,9 +462,10 @@
       <span class="music-motif score-recital" aria-hidden="true">🎼</span>
       <div class="container">
         <div class="recital-panel reveal">
-          <div>
+          <div class="recital-copy">
             <span class="recital-badge">매주 화요일 · GRAND PIANO DAY</span>
             <p class="eyebrow">Tuesday Recital</p>
+            <img class="recital-flower" src="assets/recital-poppy-watercolor.png" width="560" height="560" alt="" aria-hidden="true">
             <h2>화요일은,<br>작은 연주회가 열리는 날</h2>
             <p class="lead">매주 화요일, 아이가 배우고 있는 교재에서 가장 좋아하는 곡을 직접 고릅니다. 뉴에이지, 동요, 반주곡처럼 마음이 가는 한 곡을 외워 그랜드피아노로 연주합니다.</p>
             <p>직접 고른 곡이라 준비하는 시간부터 무대에 앉는 순간까지 아이들이 즐겁게 참여합니다. 곡의 분위기와 감정을 자기만의 연주로 표현하고, 한 곡을 완성해 낸 생생한 성취를 쌓습니다. 윤피아노의 화요일은 음악을 통해 자신의 취향을 발견하고 자신 있게 표현하는 법을 스스로 알아가는 보람찬 시간입니다.</p>
