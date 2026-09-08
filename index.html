@@ -6,7 +6,7 @@
   <title>윤피아노교습소 | 제주 애월 하귀 피아노</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hahmlet:wght@400;500;600;700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
   <meta name="description" content="제주 애월 하귀초등학교 맞은편. 아이마다 다른 속도와 성향을 살피며 원장이 직접 지도하는 소수정예 피아노 교습소입니다.">
   <meta name="theme-color" content="#f7f3ea">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
@@ -41,8 +41,9 @@
       --ink: #3e3934;
       --muted: #6f6962;
       --line: rgba(77, 66, 55, .15);
-      --serif: "Gowun Batang", "Noto Serif KR", "Nanum Myeongjo", serif;
+      --serif: "Hahmlet", "Noto Serif KR", "Nanum Myeongjo", serif;
       --sans: "Gowun Dodum", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      --hand: "Nanum Pen Script", cursive;
       --radius-s: 12px;
       --radius-m: 22px;
       --radius-l: 36px;
@@ -76,8 +77,17 @@
     }
     .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
     h1, h2, h3, p { margin-top: 0; }
-    h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.025em; }
+    h1, h2 { font-family: var(--serif); font-weight: 500; letter-spacing: -.035em; }
     h1 { font-size: clamp(2.55rem, 6.2vw, 5.25rem); line-height: 1.16; margin-bottom: 1.6rem; }
+    h1 em {
+      position: relative; z-index: 0; color: var(--green-deep); font-style: normal;
+      white-space: nowrap;
+    }
+    h1 em::after {
+      content: ""; position: absolute; z-index: -1; left: -.05em; right: -.08em;
+      bottom: .06em; height: .24em; border-radius: 999px;
+      background: rgba(234,217,134,.8); transform: rotate(-1.5deg);
+    }
     h2 { font-size: clamp(2rem, 4vw, 3.55rem); line-height: 1.28; margin-bottom: 1.35rem; }
     h3 { font-size: 1.18rem; line-height: 1.55; font-weight: 400; }
     .lead { color: var(--muted); font-size: clamp(1.02rem, 1.45vw, 1.18rem); line-height: 1.9; }
@@ -115,6 +125,11 @@
     }
     .hero-grid { display: grid; grid-template-columns: 1.03fr .97fr; gap: clamp(42px, 7vw, 92px); align-items: center; }
     .hero-copy { padding-block: 24px; position: relative; z-index: 1; }
+    .hand-note {
+      margin: 0 0 .35rem; color: var(--apricot); font-family: var(--hand);
+      font-size: clamp(1.35rem, 2.2vw, 1.72rem); line-height: 1.2;
+      transform: rotate(-1.2deg); transform-origin: left center;
+    }
     .hero-copy .lead { max-width: 630px; margin-bottom: 1.75rem; }
     .supporting { display: flex; flex-wrap: wrap; gap: .55rem; margin: 0 0 2rem; padding: 0; list-style: none; }
     .supporting li { padding: .48rem .78rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.38); color: #5f574f; font-size: .84rem; }
@@ -340,8 +355,9 @@
     <section class="hero" id="top">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
+          <p class="hand-note">아이마다 다른 속도로, 음악과 가까워집니다 ♪</p>
           <p class="eyebrow">제주 애월 · 하귀</p>
-          <h1>아이의 속도를<br>기다려주는 피아노</h1>
+          <h1>아이의 속도를<br><em>기다려주는</em> 피아노</h1>
           <p class="lead">서두르지 않고 한 명 한 명의 속도와 성향을 살피며, 아이에게 맞는 방법으로 음악과 가까워질 수 있도록 지도합니다.</p>
           <ul class="supporting" aria-label="윤피아노의 특징">
             <li>맞춤 개인 지도</li>
