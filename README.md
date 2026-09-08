@@ -21,3 +21,11 @@ GitHub Pages에 바로 배포할 수 있는 정적 홈페이지입니다.
 - 네이버 플레이스 주소
 
 현재 확인되지 않은 정보는 홈페이지에서 사실처럼 표시하지 않고, 교체 예정 문구로 구분해 두었습니다.
+
+## 포함된 브랜드 이미지
+
+- 브라우저 파비콘: `assets/favicon.ico` 및 PNG 규격
+- 모바일 홈 화면 아이콘: `assets/apple-touch-icon.png`
+- 카카오톡·SNS 공유 이미지: `assets/og-yoon-piano.jpg`
+
+GitHub에 업데이트할 때 `index.html`뿐 아니라 `assets` 폴더도 함께 업로드해야 합니다.
