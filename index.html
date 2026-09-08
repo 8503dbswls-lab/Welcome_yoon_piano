@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>윤피아노교습소 | 제주 애월 하귀 피아노</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
   <meta name="description" content="제주 애월 하귀초등학교 맞은편. 아이마다 다른 속도와 성향을 살피며 원장이 직접 지도하는 소수정예 피아노 교습소입니다.">
   <meta name="theme-color" content="#f7f3ea">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
@@ -38,8 +41,8 @@
       --ink: #3e3934;
       --muted: #6f6962;
       --line: rgba(77, 66, 55, .15);
-      --serif: "Noto Serif KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
-      --sans: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --serif: "Gowun Batang", "Noto Serif KR", "Nanum Myeongjo", serif;
+      --sans: "Gowun Dodum", "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
       --radius-s: 12px;
       --radius-m: 22px;
       --radius-l: 36px;
@@ -73,10 +76,10 @@
     }
     .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
     h1, h2, h3, p { margin-top: 0; }
-    h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.035em; }
+    h1, h2 { font-family: var(--serif); font-weight: 400; letter-spacing: -.025em; }
     h1 { font-size: clamp(2.55rem, 6.2vw, 5.25rem); line-height: 1.16; margin-bottom: 1.6rem; }
     h2 { font-size: clamp(2rem, 4vw, 3.55rem); line-height: 1.28; margin-bottom: 1.35rem; }
-    h3 { font-size: 1.18rem; line-height: 1.45; }
+    h3 { font-size: 1.18rem; line-height: 1.55; font-weight: 400; }
     .lead { color: var(--muted); font-size: clamp(1.02rem, 1.45vw, 1.18rem); line-height: 1.9; }
 
     header {
@@ -87,7 +90,7 @@
     header.scrolled { border-color: var(--line); }
     .nav { height: 82px; display: flex; align-items: center; justify-content: space-between; }
     .brand { display: flex; flex-direction: column; line-height: 1.15; }
-    .brand strong { display: flex; align-items: center; gap: .45rem; font-family: var(--serif); font-size: 1.28rem; letter-spacing: -.02em; }
+    .brand strong { display: flex; align-items: center; gap: .45rem; font-family: var(--serif); font-size: 1.28rem; font-weight: 700; letter-spacing: -.02em; }
     .brand-note { display: inline-grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: var(--butter); color: var(--green-deep); font-family: var(--serif); font-size: .95rem; }
     .brand small { margin-top: .3rem; color: var(--muted); font-size: .66rem; letter-spacing: .15em; }
     .nav-links { display: flex; align-items: center; gap: 2rem; font-size: .92rem; }
