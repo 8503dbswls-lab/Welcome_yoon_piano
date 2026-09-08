@@ -186,7 +186,14 @@
 
     section { padding: 112px 0; }
     .section-intro { max-width: 740px; margin-bottom: 52px; }
-    .why { position: relative; background: var(--paper); }
+    .why { position: relative; overflow: hidden; isolation: isolate; background: var(--paper); }
+    .why::before {
+      content: ""; position: absolute; z-index: -1; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,254,250,.97) 0%, rgba(255,254,250,.84) 47%, rgba(255,254,250,.92) 100%),
+        url("assets/og-yoon-piano.jpg") center 46% / cover no-repeat;
+      opacity: .42;
+    }
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .card { min-height: 260px; padding: 1.9rem; border: 1px solid var(--line); border-radius: var(--radius-m); background: rgba(255,255,255,.5); transition: transform .25s ease, background .25s ease, box-shadow .25s ease; }
     .card:nth-child(2) { background: rgba(234,217,134,.23); }
@@ -262,6 +269,25 @@
     .contact-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.6rem; }
     .pending-note { margin: 1.2rem auto 0 !important; font-size: .8rem; opacity: .8; }
 
+    .share-button {
+      position: fixed; z-index: 45; right: 22px; bottom: 24px;
+      display: grid; place-items: center; width: 52px; height: 52px; padding: 0;
+      border: 1px solid rgba(82,107,73,.28); border-radius: 50%;
+      background: rgba(255,254,250,.94); color: var(--green-deep);
+      box-shadow: 0 12px 30px rgba(62,57,52,.16); cursor: pointer;
+      backdrop-filter: blur(10px); transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .share-button:hover, .share-button:focus-visible { transform: translateY(-2px); background: var(--poppy); color: #fff; }
+    .share-button svg { width: 22px; height: 22px; }
+    .share-status {
+      position: fixed; z-index: 46; right: 84px; bottom: 30px;
+      max-width: min(260px, calc(100vw - 110px)); padding: .65rem .85rem;
+      border-radius: 12px; background: var(--ink); color: #fff; font-size: .84rem;
+      box-shadow: 0 10px 24px rgba(62,57,52,.18); opacity: 0; transform: translateY(6px);
+      pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+    }
+    .share-status.show { opacity: 1; transform: none; }
+
     footer { padding: 40px 0 110px; border-top: 1px solid var(--line); }
     .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; color: var(--muted); font-size: .82rem; }
     .footer-brand { color: var(--ink); font-family: var(--serif); font-size: 1.1rem; }
@@ -314,6 +340,9 @@
       .location-copy { padding: 36px 24px; }
       .footer-inner { flex-direction: column; }
       .mobile-contact { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 40; min-height: 54px; align-items: center; justify-content: center; border-radius: 999px; background: var(--green-deep); color: white; font-weight: 800; box-shadow: 0 12px 30px rgba(48,58,43,.28); }
+      .share-button { right: 18px; bottom: 80px; width: 48px; height: 48px; }
+      .share-status { right: 76px; bottom: 86px; }
+      .why::before { background-position: 58% center; opacity: .28; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -456,13 +485,72 @@
     <div class="container footer-inner"><div><div class="footer-brand">윤피아노교습소</div><div>좋아하는 음악을 연주하며, 나다움을 찾아갑니다</div></div><div>제주특별자치도 제주시 애월읍 · 하귀초등학교 맞은편<br>상세 사업자 정보 확인 후 표기 예정</div></div>
   </footer>
   <a class="mobile-contact" href="#contact">편하게 상담 문의하기</a>
+  <button class="share-button" type="button" aria-label="홈페이지 공유하기" title="홈페이지 공유하기">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="18" cy="5" r="2.5" stroke="currentColor" stroke-width="1.8"></circle>
+      <circle cx="6" cy="12" r="2.5" stroke="currentColor" stroke-width="1.8"></circle>
+      <circle cx="18" cy="19" r="2.5" stroke="currentColor" stroke-width="1.8"></circle>
+      <path d="M8.2 10.8l7.6-4.5M8.2 13.2l7.6 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+    </svg>
+  </button>
+  <div class="share-status" role="status" aria-live="polite"></div>
 
   <script>
     const header = document.querySelector('#header');
     const progress = document.querySelector('.scroll-progress');
     const menuButton = document.querySelector('.menu-button');
     const navLinks = document.querySelector('.nav-links');
+    const shareButton = document.querySelector('.share-button');
+    const shareStatus = document.querySelector('.share-status');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let shareStatusTimer;
+
+    function showShareStatus(message) {
+      window.clearTimeout(shareStatusTimer);
+      shareStatus.textContent = message;
+      shareStatus.classList.add('show');
+      shareStatusTimer = window.setTimeout(() => shareStatus.classList.remove('show'), 2400);
+    }
+
+    async function copyPageAddress() {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(window.location.href);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = window.location.href;
+        input.setAttribute('readonly', '');
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.appendChild(input);
+        input.select();
+        const copied = document.execCommand('copy');
+        input.remove();
+        if (!copied) throw new Error('copy_failed');
+      }
+      showShareStatus('홈페이지 주소를 복사했습니다.');
+    }
+
+    shareButton.addEventListener('click', async () => {
+      const shareData = {
+        title: '윤피아노교습소',
+        text: '좋아하는 음악을 연주하며, 나다움을 찾아갑니다.',
+        url: window.location.href
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          await copyPageAddress();
+        }
+      } catch (error) {
+        if (error && error.name === 'AbortError') return;
+        try {
+          await copyPageAddress();
+        } catch (copyError) {
+          showShareStatus('주소를 복사하지 못했습니다. 주소창에서 복사해 주세요.');
+        }
+      }
+    });
 
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 10);
