@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>윤피아노교습소 | 제주 애월 하귀 피아노</title>
+  <meta name="description" content="제주 애월 하귀초등학교 맞은편. 아이마다 다른 속도와 성향을 살피며 원장이 직접 지도하는 소수정예 피아노 교습소입니다.">
+  <meta name="theme-color" content="#f7f3ea">
+  <style>
+    :root {
+      --ivory: #f8f5ed;
+      --cream: #efe7d8;
+      --paper: #fffdf8;
+      --butter: #e5d59c;
+      --apricot: #c98f6c;
+      --green: #758268;
+      --green-deep: #52604b;
+      --brown: #725a47;
+      --ink: #3e3934;
+      --muted: #6f6962;
+      --line: rgba(77, 66, 55, .15);
+      --serif: "Noto Serif KR", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
+      --sans: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --radius-s: 12px;
+      --radius-m: 22px;
+      --radius-l: 36px;
+      --shadow: 0 18px 54px rgba(78, 62, 46, .09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ivory);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.75;
+      word-break: keep-all;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .skip-link {
+      position: fixed; left: 1rem; top: -4rem; z-index: 100;
+      background: var(--ink); color: white; padding: .7rem 1rem; border-radius: 8px;
+    }
+    .skip-link:focus { top: 1rem; }
+    .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      margin: 0 0 1rem; color: var(--green-deep); font-size: .82rem;
+      font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { font-family: var(--serif); font-weight: 600; letter-spacing: -.035em; }
+    h1 { font-size: clamp(2.55rem, 6.2vw, 5.25rem); line-height: 1.16; margin-bottom: 1.6rem; }
+    h2 { font-size: clamp(2rem, 4vw, 3.55rem); line-height: 1.28; margin-bottom: 1.35rem; }
+    h3 { font-size: 1.18rem; line-height: 1.45; }
+    .lead { color: var(--muted); font-size: clamp(1.02rem, 1.45vw, 1.18rem); line-height: 1.9; }
+
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(248, 245, 237, .88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent; transition: border-color .25s ease;
+    }
+    header.scrolled { border-color: var(--line); }
+    .nav { height: 82px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; flex-direction: column; line-height: 1.15; }
+    .brand strong { font-family: var(--serif); font-size: 1.28rem; letter-spacing: -.02em; }
+    .brand small { margin-top: .3rem; color: var(--muted); font-size: .66rem; letter-spacing: .15em; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; font-size: .92rem; }
+    .nav-links a { position: relative; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -.45rem; height: 1px; background: var(--green); transition: right .2s; }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { right: 0; }
+    .nav-cta, .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: .75rem 1.25rem; border-radius: 999px;
+      border: 1px solid var(--green-deep); font-weight: 700; line-height: 1.2;
+      transition: transform .2s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+    .nav-cta, .btn.primary { background: var(--green-deep); color: #fff; }
+    .btn.secondary { border-color: var(--line); background: rgba(255,255,255,.42); }
+    .nav-cta:hover, .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(63, 74, 56, .14); }
+    .menu-button { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: transparent; }
+
+    .hero { position: relative; overflow: hidden; padding: 64px 0 112px; }
+    .hero::before {
+      content: ""; position: absolute; width: 540px; height: 540px; border-radius: 50%;
+      right: -220px; top: -260px; background: rgba(229, 213, 156, .35); filter: blur(1px);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.03fr .97fr; gap: clamp(42px, 7vw, 92px); align-items: center; }
+    .hero-copy { padding-block: 24px; position: relative; z-index: 1; }
+    .hero-copy .lead { max-width: 630px; margin-bottom: 1.75rem; }
+    .supporting { display: flex; flex-wrap: wrap; gap: .55rem; margin: 0 0 2rem; padding: 0; list-style: none; }
+    .supporting li { padding: .48rem .78rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.38); color: #5f574f; font-size: .84rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 2.3rem; }
+    .location-line { display: flex; gap: .8rem; align-items: center; color: var(--brown); font-weight: 700; font-size: .94rem; }
+    .location-line span:first-child { width: 9px; height: 9px; border-radius: 50%; background: var(--apricot); box-shadow: 0 0 0 6px rgba(201,143,108,.15); }
+
+    .hero-visual { position: relative; min-height: 620px; }
+    .photo-shell { position: absolute; inset: 0 0 44px 34px; border-radius: 46% 46% 26px 26px; overflow: hidden; background: #dfd6c7; box-shadow: var(--shadow); }
+    .photo-placeholder { height: 100%; display: grid; place-items: center; position: relative; overflow: hidden; color: #5e584f; }
+    .photo-placeholder::before { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, rgba(255,255,255,.72), transparent 45%), radial-gradient(circle at 70% 28%, rgba(225,199,127,.8), transparent 22%), linear-gradient(165deg, #dfe3d6 0 52%, #b6a28c 52% 56%, #7a6758 56% 100%); }
+    .photo-note { position: relative; z-index: 1; width: min(78%, 350px); padding: 1.25rem 1.4rem; border: 1px solid rgba(255,255,255,.65); border-radius: 18px; background: rgba(255,253,248,.78); backdrop-filter: blur(8px); text-align: center; }
+    .photo-note strong { display: block; font-family: var(--serif); font-size: 1.12rem; margin-bottom: .25rem; }
+    .photo-note span { color: var(--muted); font-size: .82rem; }
+    .visual-caption { position: absolute; left: 0; bottom: 0; width: 215px; padding: 1.1rem 1.25rem; border-radius: 18px; background: var(--paper); box-shadow: 0 12px 36px rgba(73,58,43,.12); }
+    .visual-caption b { display: block; font-family: var(--serif); font-size: 1.2rem; margin-bottom: .2rem; }
+    .visual-caption span { color: var(--muted); font-size: .82rem; }
+
+    section { padding: 112px 0; }
+    .section-intro { max-width: 740px; margin-bottom: 52px; }
+    .philosophy { background: var(--paper); }
+    .philosophy-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(50px, 9vw, 120px); align-items: start; }
+    .principle { border-left: 2px solid var(--apricot); padding-left: 1.5rem; font-family: var(--serif); font-size: clamp(1.28rem, 2vw, 1.65rem); line-height: 1.75; }
+    .process { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-m); overflow: hidden; }
+    .process-item { display: grid; grid-template-columns: 48px 1fr; gap: 1rem; padding: 1.4rem 1.5rem; background: var(--paper); }
+    .process-item span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--cream); color: var(--brown); font-size: .78rem; font-weight: 800; }
+    .process-item h3 { margin: 0 0 .25rem; }
+    .process-item p { margin: 0; color: var(--muted); }
+
+    .why { position: relative; }
+    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .card { min-height: 285px; padding: 1.8rem; border: 1px solid var(--line); border-radius: var(--radius-m); background: rgba(255,255,255,.5); transition: transform .25s ease, background .25s ease, box-shadow .25s ease; }
+    .card:hover { transform: translateY(-5px); background: var(--paper); box-shadow: var(--shadow); }
+    .card-index { display: block; margin-bottom: 4rem; color: var(--apricot); font-size: .78rem; font-weight: 800; letter-spacing: .12em; }
+    .card p { color: var(--muted); margin-bottom: 0; font-size: .94rem; }
+
+    .quiet-time { padding: 0; }
+    .quiet-panel { min-height: 510px; display: grid; grid-template-columns: 1fr 1fr; background: var(--green-deep); color: white; overflow: hidden; border-radius: var(--radius-l); }
+    .quiet-copy { padding: clamp(42px, 7vw, 88px); align-self: center; }
+    .quiet-copy .eyebrow { color: #d9d2b3; }
+    .quiet-copy p { color: rgba(255,255,255,.72); max-width: 520px; }
+    .quiet-art { position: relative; background: #758268; overflow: hidden; }
+    .quiet-art::before, .quiet-art::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(255,255,255,.24); }
+    .quiet-art::before { width: 460px; height: 460px; right: -80px; top: -80px; box-shadow: 0 0 0 90px rgba(255,255,255,.035), 0 0 0 180px rgba(255,255,255,.025); }
+    .quiet-art::after { width: 90px; height: 90px; left: 22%; bottom: 21%; background: rgba(229,213,156,.55); border: 0; }
+    .quiet-art-text { position: absolute; left: 12%; bottom: 12%; font-family: var(--serif); font-size: clamp(2.4rem, 6vw, 5rem); line-height: 1; color: rgba(255,255,255,.22); }
+
+    .director { background: var(--paper); }
+    .director-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(48px, 8vw, 100px); align-items: center; }
+    .portrait-placeholder { aspect-ratio: 4/5; border-radius: 48% 48% 20px 20px; background: linear-gradient(145deg, #eee6d8, #d8d0c3); display: grid; place-items: end center; padding: 1.2rem; color: var(--muted); text-align: center; font-size: .82rem; }
+    .quote { margin: 1.8rem 0; font-family: var(--serif); font-size: clamp(1.3rem, 2.1vw, 1.8rem); line-height: 1.7; color: var(--brown); }
+    .signature { margin-top: 2rem; font-size: .9rem; font-weight: 700; color: var(--green-deep); }
+
+    .lesson-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(48px, 8vw, 100px); align-items: start; }
+    .lesson-steps { counter-reset: step; display: grid; gap: 14px; }
+    .lesson-step { counter-increment: step; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius-m); background: rgba(255,255,255,.42); }
+    .lesson-step h3::before { content: "0" counter(step); margin-right: .8rem; color: var(--apricot); font-size: .8rem; letter-spacing: .08em; }
+    .lesson-step p { margin: 0 0 0 2.2rem; color: var(--muted); font-size: .94rem; }
+
+    .recital { padding-top: 0; }
+    .recital-panel {
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: .88fr 1.12fr; gap: clamp(40px, 7vw, 86px);
+      padding: clamp(38px, 7vw, 82px); border-radius: var(--radius-l);
+      background: #d7a27f; color: #332e2a;
+    }
+    .recital-panel::after {
+      content: "♪"; position: absolute; right: 4%; top: -9%;
+      font-family: var(--serif); font-size: clamp(10rem, 24vw, 20rem);
+      line-height: 1; color: rgba(255,255,255,.13); transform: rotate(8deg);
+    }
+    .recital-panel .eyebrow { color: #4f443b; }
+    .recital-panel .lead { color: #54483f; }
+    .recital-badge {
+      display: inline-block; margin-bottom: 1.2rem; padding: .5rem .8rem;
+      border: 1px solid rgba(51,46,42,.22); border-radius: 999px;
+      font-size: .76rem; font-weight: 800; letter-spacing: .08em;
+    }
+    .recital-flow { position: relative; z-index: 1; display: grid; gap: 12px; align-content: center; }
+    .recital-step {
+      display: grid; grid-template-columns: 54px 1fr; gap: 1rem; align-items: center;
+      padding: 1.25rem; border-radius: 18px; background: rgba(255,253,248,.72);
+      border: 1px solid rgba(255,255,255,.46); backdrop-filter: blur(6px);
+    }
+    .recital-step span {
+      display: grid; place-items: center; width: 46px; height: 46px;
+      border-radius: 50%; background: var(--paper); font-family: var(--serif);
+      color: var(--brown); font-size: 1.05rem;
+    }
+    .recital-step h3 { margin: 0 0 .15rem; }
+    .recital-step p { margin: 0; color: #675a50; font-size: .9rem; }
+
+    .space { background: var(--cream); }
+    .space-head { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 42px; }
+    .space-head .section-intro { margin-bottom: 0; }
+    .gallery { display: grid; grid-template-columns: 1.35fr .8fr .8fr; grid-template-rows: 240px 240px; gap: 14px; }
+    .gallery-item { border-radius: var(--radius-m); padding: 1.2rem; display: flex; align-items: end; position: relative; overflow: hidden; background: #d5d1c5; color: #504a43; }
+    .gallery-item::before { content: ""; position: absolute; inset: 0; background: linear-gradient(160deg, rgba(255,255,255,.65), transparent 55%), radial-gradient(circle at 70% 30%, rgba(126,139,112,.35), transparent 26%); }
+    .gallery-item:first-child { grid-row: 1 / 3; background: #c8cdbf; }
+    .gallery-item:nth-child(3) { background: #ded1bd; }
+    .gallery-item:nth-child(4) { background: #c4b5a8; }
+    .gallery-label { position: relative; z-index: 1; width: 100%; padding-top: .8rem; border-top: 1px solid rgba(64,58,52,.18); font-size: .82rem; }
+
+    .stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .story { border-top: 1px solid var(--ink); padding-top: 1.2rem; }
+    .story small { color: var(--green-deep); font-weight: 700; }
+    .story h3 { margin: 1rem 0 .6rem; font-family: var(--serif); font-size: 1.32rem; }
+    .story p { color: var(--muted); font-size: .92rem; }
+    .story .coming { display: inline-block; margin-top: .5rem; color: var(--muted); font-size: .78rem; border-bottom: 1px solid var(--line); }
+
+    .location { background: var(--paper); }
+    .location-panel { display: grid; grid-template-columns: 1fr .8fr; border: 1px solid var(--line); border-radius: var(--radius-l); overflow: hidden; }
+    .location-copy { padding: clamp(36px, 6vw, 72px); }
+    .location-copy h2 { margin-bottom: 1rem; }
+    .location-copy p { color: var(--muted); }
+    .map-card { min-height: 380px; background: #e3ddcf; display: grid; place-items: center; position: relative; overflow: hidden; }
+    .map-card::before { content: ""; position: absolute; width: 130%; height: 1px; background: rgba(82,96,75,.25); box-shadow: 0 56px 0 rgba(82,96,75,.18), 0 -70px 0 rgba(82,96,75,.16); transform: rotate(-18deg); }
+    .map-pin { position: relative; z-index: 1; width: 120px; height: 120px; border-radius: 50% 50% 50% 8px; transform: rotate(-45deg); background: var(--apricot); box-shadow: 0 16px 40px rgba(112,91,73,.18); display: grid; place-items: center; }
+    .map-pin span { transform: rotate(45deg); width: 48px; height: 48px; border-radius: 50%; background: var(--paper); }
+
+    .contact { text-align: center; }
+    .contact-box { max-width: 900px; margin-inline: auto; padding: clamp(48px, 8vw, 90px) 24px; border-radius: var(--radius-l); background: var(--butter); }
+    .contact-box p { max-width: 590px; margin: 0 auto 2rem; color: #635c4e; }
+    .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: .7rem; }
+    .pending-note { margin: 1.2rem auto 0 !important; font-size: .8rem; opacity: .8; }
+
+    footer { padding: 40px 0 110px; border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; color: var(--muted); font-size: .82rem; }
+    .footer-brand { color: var(--ink); font-family: var(--serif); font-size: 1.1rem; }
+    .mobile-contact { display: none; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 960px) {
+      .nav-links { position: fixed; inset: 82px 0 auto; padding: 1.5rem 24px 2rem; background: var(--ivory); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: .4rem; transform: translateY(-140%); transition: transform .28s ease; }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links a { padding: .75rem 0; font-size: 1rem; }
+      .nav-links .nav-cta { margin-top: .5rem; }
+      .menu-button { display: block; }
+      .hero-grid, .philosophy-layout, .director-grid, .lesson-grid { grid-template-columns: 1fr; }
+      .recital-panel { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+      .hero-copy { padding-bottom: 0; }
+      .hero-visual { min-height: 520px; max-width: 610px; width: 100%; margin-inline: auto; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .quiet-panel { grid-template-columns: 1fr; }
+      .quiet-art { min-height: 280px; }
+      .director-grid { max-width: 760px; }
+      .portrait-placeholder { max-width: 430px; width: 100%; }
+      .gallery { grid-template-columns: 1.2fr .8fr; }
+      .gallery-item:nth-child(4) { display: none; }
+      .location-panel { grid-template-columns: 1fr; }
+      .map-card { min-height: 280px; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 32px, 1160px); }
+      .nav { height: 70px; }
+      .nav-links { inset-block-start: 70px; }
+      .brand small { display: none; }
+      h1 { font-size: clamp(2.45rem, 12vw, 3.55rem); }
+      h2 { font-size: clamp(1.92rem, 9vw, 2.7rem); }
+      .hero { padding: 34px 0 84px; }
+      .hero-actions .btn { flex: 1 1 150px; }
+      .hero-visual { min-height: 420px; }
+      .photo-shell { inset: 0 0 36px 18px; border-radius: 42% 42% 22px 22px; }
+      .visual-caption { width: 180px; padding: .9rem 1rem; }
+      section { padding: 80px 0; }
+      .section-intro { margin-bottom: 36px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .card-index { margin-bottom: 2.5rem; }
+      .quiet-time { padding-inline: 16px; }
+      .quiet-panel { border-radius: 26px; }
+      .quiet-art { min-height: 210px; }
+      .quote { font-size: 1.35rem; }
+      .space-head { align-items: start; flex-direction: column; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 310px 170px; }
+      .gallery-item:first-child { grid-column: 1 / 3; grid-row: 1; }
+      .stories-grid { grid-template-columns: 1fr; gap: 32px; }
+      .location-copy { padding: 36px 24px; }
+      .footer-inner { flex-direction: column; }
+      .mobile-contact { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 40; min-height: 54px; align-items: center; justify-content: center; border-radius: 999px; background: var(--green-deep); color: white; font-weight: 800; box-shadow: 0 12px 30px rgba(48,58,43,.28); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문 바로가기</a>
+  <header id="header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="윤피아노교습소 처음으로">
+        <strong>윤피아노교습소</strong>
+        <small>YOON PIANO · AEWOL</small>
+      </a>
+      <button class="menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false">메뉴</button>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a href="#philosophy">교육 이야기</a>
+        <a href="#lesson">수업 안내</a>
+        <a href="#space">공간</a>
+        <a href="#location">오시는 길</a>
+        <a class="nav-cta" href="#contact">수업 상담하기</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">제주 애월 · 하귀</p>
+          <h1>아이의 속도를<br>기다려주는 피아노</h1>
+          <p class="lead">서두르지 않고 한 명 한 명의 속도와 성향을 살피며, 아이에게 맞는 방법으로 음악과 가까워질 수 있도록 지도합니다.</p>
+          <ul class="supporting" aria-label="윤피아노의 특징">
+            <li>맞춤 개인 지도</li>
+            <li>소수정예 시간정원제</li>
+            <li>원장 직접 지도</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="btn primary" href="#contact">수업 상담하기</a>
+            <a class="btn secondary" href="#philosophy">윤피아노 알아보기</a>
+          </div>
+          <p class="location-line"><span aria-hidden="true"></span><span>하귀초등학교 맞은편</span></p>
+        </div>
+        <div class="hero-visual reveal" aria-label="윤피아노 실제 공간 사진 영역">
+          <div class="photo-shell">
+            <div class="photo-placeholder">
+              <div class="photo-note"><strong>윤피아노의 실제 모습</strong><span>피아노와 식물이 함께 보이는 공간 사진으로 교체 예정</span></div>
+            </div>
+          </div>
+          <div class="visual-caption"><b>천천히, 자기답게</b><span>이해하고 자기 것으로 만드는 시간</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="philosophy" id="philosophy">
+      <div class="container philosophy-layout">
+        <div class="reveal">
+          <p class="eyebrow">Our Philosophy</p>
+          <h2>아이를 진도에 맞추기보다,<br>아이에게 맞는 진도를 찾습니다.</h2>
+          <p class="lead">같은 나이의 아이도 배우는 속도와 집중하는 방법은 모두 다릅니다. 먼저 아이를 살피는 것에서 수업을 시작합니다.</p>
+          <p class="principle">조금 천천히 배워도 괜찮습니다.<br>한 곡을 이해하고 자신의 것으로 만드는 과정이 더 중요하니까요.</p>
+        </div>
+        <div class="process reveal" aria-label="윤피아노의 맞춤 지도 과정">
+          <article class="process-item"><span>01</span><div><h3>아이를 먼저 살핍니다</h3><p>배우는 속도와 성향, 집중하는 방식을 세심하게 관찰합니다.</p></div></article>
+          <article class="process-item"><span>02</span><div><h3>알맞은 교재를 고릅니다</h3><p>모두에게 같은 교재를 적용하기보다 아이에게 맞는 출발점을 찾습니다.</p></div></article>
+          <article class="process-item"><span>03</span><div><h3>개별 진도로 지도합니다</h3><p>수업 중 보이는 이해도와 변화를 살피며 진도를 조정합니다.</p></div></article>
+          <article class="process-item"><span>04</span><div><h3>스스로 해낸 경험을 쌓습니다</h3><p>재촉하기보다 충분히 이해하고 연주하는 기쁨을 만날 수 있게 돕습니다.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="why" id="why">
+      <div class="container">
+        <div class="section-intro reveal"><p class="eyebrow">Why Yoon Piano</p><h2>한 명 한 명을 놓치지 않는<br>세심한 수업</h2><p class="lead">운영 방식의 차이가 아이에게 더 편안하고 밀도 있는 배움으로 이어지도록 합니다.</p></div>
+        <div class="cards">
+          <article class="card reveal"><span class="card-index">01 · PERSONAL</span><h3>아이마다 다른 맞춤 개인 지도</h3><p>이해 속도와 성향을 살펴 교재와 진도를 유연하게 조정합니다.</p></article>
+          <article class="card reveal"><span class="card-index">02 · FOCUSED</span><h3>소수정예 시간정원제</h3><p>한 명 한 명의 연주와 작은 변화를 세심하게 살필 수 있도록 운영합니다.</p></article>
+          <article class="card reveal"><span class="card-index">03 · DIRECT</span><h3>원장 직접 지도</h3><p>아이의 학습 흐름을 꾸준히 이어서 살피고 필요한 순간에 수업을 조정합니다.</p></article>
+          <article class="card reveal"><span class="card-index">04 · COMFORT</span><h3>편안하고 쾌적한 공간</h3><p>피아노와 식물이 함께하는 넓고 밝은 공간에서 차분히 음악을 만납니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quiet-time">
+      <div class="container quiet-panel reveal">
+        <div class="quiet-copy"><p class="eyebrow">A Quiet Moment</p><h2>하루 중 잠시,<br>자신의 소리에 집중하는 시간</h2><p>학교와 일정을 오가는 바쁜 하루 속에서 건반을 누르고, 소리를 듣고, 한 곡을 완성하는 경험. 화면을 보는 즐거움과는 조금 다른 차분한 성취를 아이의 하루에 더합니다.</p></div>
+        <div class="quiet-art" aria-hidden="true"><span class="quiet-art-text">piano</span></div>
+      </div>
+    </section>
+
+    <section class="director" id="director">
+      <div class="container director-grid">
+        <div class="portrait-placeholder reveal">원장님이 악보를 살펴보는<br>자연스러운 실제 사진 영역</div>
+        <div class="reveal"><p class="eyebrow">From the Director</p><h2>오래 가르칠수록,<br>기다림의 중요성을 알게 됩니다.</h2><p class="lead">아이들을 가르치다 보면 같은 설명도 받아들이는 방법이 저마다 다르다는 것을 만납니다. 그래서 먼저 듣고, 살피고, 아이에게 맞는 방법을 함께 찾습니다.</p><p class="quote">“빨리 다음 곡으로 넘어가는 것보다,<br>아이가 이해하고 자기 것으로 만드는 시간이 더 중요하다고 생각합니다.”</p><p>작은 변화를 알아보고 편안하게 질문할 수 있는 선생님이 되겠습니다. 음악을 배우는 시간이 아이에게 오래 기억될 좋은 경험이기를 바랍니다.</p><p class="signature">윤피아노교습소 원장</p></div>
+      </div>
+    </section>
+
+    <section id="lesson">
+      <div class="container lesson-grid">
+        <div class="section-intro reveal"><p class="eyebrow">Lesson</p><h2>같은 학년이라도<br>같은 진도로 가르치지 않습니다.</h2><p class="lead">초등학생을 중심으로, 아이가 음악을 받아들이는 방식과 현재의 수준을 살펴 수업을 이어갑니다.</p></div>
+        <div class="lesson-steps reveal">
+          <article class="lesson-step"><h3>맞춤 교재 선정</h3><p>아이의 현재 수준과 흥미, 손의 발달 정도를 함께 살펴 교재를 선택합니다.</p></article>
+          <article class="lesson-step"><h3>개별 커리큘럼과 진도</h3><p>정해진 속도를 따르기보다 이해한 만큼 차분하게 다음 단계로 나아갑니다.</p></article>
+          <article class="lesson-step"><h3>원장의 지속적인 관찰</h3><p>매 수업의 반응과 변화를 직접 살피며 필요한 부분을 놓치지 않습니다.</p></article>
+          <article class="lesson-step"><h3>필요에 따른 수업 조정</h3><p>어려워하는 지점에서는 방법을 바꾸고, 즐거워하는 부분은 더 깊이 경험하게 합니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="recital" id="recital">
+      <div class="container">
+        <div class="recital-panel reveal">
+          <div>
+            <span class="recital-badge">매주 화요일 · GRAND PIANO DAY</span>
+            <p class="eyebrow">Tuesday Recital</p>
+            <h2>화요일은,<br>작은 연주회가 열리는 날</h2>
+            <p class="lead">매주 화요일, 아이가 배우고 있는 교재에서 가장 좋아하는 곡을 직접 고릅니다. 뉴에이지, 동요, 반주곡처럼 마음이 가는 한 곡을 외워 그랜드피아노로 연주합니다.</p>
+            <p>누가 정해준 곡이 아니라 자신이 고른 곡이기에 준비하는 시간도, 연주하는 순간도 즐겁습니다. 윤피아노는 아이들이 좋아하는 음악을 자기 힘으로 완성해 보는 경험을 소중하게 생각합니다.</p>
+          </div>
+          <div class="recital-flow" aria-label="화요일 작은 연주회 과정">
+            <article class="recital-step"><span>01</span><div><h3>좋아하는 곡 고르기</h3><p>배우는 교재 속에서 자신이 연주하고 싶은 한 곡을 직접 선택합니다.</p></div></article>
+            <article class="recital-step"><span>02</span><div><h3>차근차근 외우기</h3><p>한 음씩 익히며 곡을 이해하고 자기 것으로 만들어 갑니다.</p></div></article>
+            <article class="recital-step"><span>03</span><div><h3>그랜드피아노에서 연주하기</h3><p>매주 화요일, 준비한 곡을 연주하며 작은 무대를 즐깁니다.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="space" id="space">
+      <div class="container">
+        <div class="space-head"><div class="section-intro reveal"><p class="eyebrow">Our Space</p><h2>피아노와 식물이<br>함께 자라는 공간</h2><p class="lead">오랫동안 정성스럽게 가꾸어 온, 생활감 있고 편안한 음악 공간입니다.</p></div><p class="reveal">실제 공간 사진 촬영 후 교체 예정</p></div>
+        <div class="gallery reveal" aria-label="윤피아노 공간 사진 갤러리">
+          <div class="gallery-item"><span class="gallery-label">학원 전체 공간 · 피아노와 식물</span></div>
+          <div class="gallery-item"><span class="gallery-label">창가의 화분과 작은 꽃</span></div>
+          <div class="gallery-item"><span class="gallery-label">악보와 건반의 가까운 모습</span></div>
+          <div class="gallery-item"><span class="gallery-label">윤피아노의 작은 소품</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stories">
+      <div class="container">
+        <div class="section-intro reveal"><p class="eyebrow">Stories</p><h2>윤피아노의 생각과<br>작은 일상</h2><p class="lead">아이를 가르치며 만나는 생각과 음악이 머무는 공간의 이야기를 차분히 전합니다.</p></div>
+        <div class="stories-grid">
+          <article class="story reveal"><small>피아노 교육 이야기</small><h3>아이마다 배우는 속도가 다른 이유</h3><p>한 번의 설명보다 기다림이 더 필요한 순간에 관한 이야기.</p><span class="coming">네이버 블로그 연동 예정</span></article>
+          <article class="story reveal"><small>아이와 음악 이야기</small><h3>한 곡을 끝까지 연주해 본다는 것</h3><p>작은 완성이 아이에게 남기는 차분한 성취의 경험.</p><span class="coming">네이버 블로그 연동 예정</span></article>
+          <article class="story reveal"><small>윤피아노의 작은 일상</small><h3>음악실에 계절을 들이는 방법</h3><p>식물과 소품으로 천천히 달라지는 윤피아노의 하루.</p><span class="coming">네이버 블로그 연동 예정</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <div class="container location-panel reveal">
+        <div class="location-copy"><p class="eyebrow">Location</p><h2>하귀초등학교<br>맞은편에 있습니다.</h2><p>학교에서 가까워 수업 전후 이동이 조금 더 편안한 위치입니다.</p><p><strong>제주특별자치도 제주시 애월읍</strong><br><span>상세 주소 확인 후 표기 예정</span></p><a class="btn secondary" href="#contact">오시는 길 문의하기</a></div>
+        <div class="map-card" role="img" aria-label="상세 주소 확인 후 지도가 표시될 영역"><div class="map-pin"><span></span></div></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-box reveal"><p class="eyebrow">Contact</p><h2>아이의 현재 피아노 경험부터<br>편하게 이야기해주세요.</h2><p>수업 방식이나 아이에게 맞는 시작점이 궁금하시면 부담 없이 문의해 주세요. 충분히 듣고 차분하게 안내드리겠습니다.</p><div class="contact-actions"><span class="btn primary" aria-disabled="true">전화 문의</span><span class="btn secondary" aria-disabled="true">네이버 플레이스 보기</span></div><p class="pending-note">연락처와 네이버 플레이스 주소 확인 후 버튼이 연결됩니다.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner"><div><div class="footer-brand">윤피아노교습소</div><div>아이의 속도를 기다려주는 피아노</div></div><div>제주특별자치도 제주시 애월읍 · 하귀초등학교 맞은편<br>상세 사업자 정보 확인 후 표기 예정</div></div>
+  </footer>
+  <a class="mobile-contact" href="#contact">편하게 상담 문의하기</a>
+
+  <script>
+    const header = document.querySelector('#header');
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+    menuButton.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? '닫기' : '메뉴';
+      document.body.classList.toggle('menu-open', open);
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = '메뉴';
+      document.body.classList.remove('menu-open');
+    }));
+
+    const items = document.querySelectorAll('.reveal');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      items.forEach(item => item.classList.add('visible'));
+    } else {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      items.forEach(item => observer.observe(item));
+    }
+  </script>
+</body>
+</html>
